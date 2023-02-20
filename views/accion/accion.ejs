@@ -1,0 +1,44 @@
+<%- include("../template/cabecera") %>
+<div class="container">
+    <!--Si existen elementos en el array de Accion-->
+    <% if (arrayAccion.length > 0) { %>
+     <!--Haremos el foreach para recorrer el array-->
+     <% arrayAccion.forEach(accion => { %>
+       <!--Aquí podremos mostrar todos los pokemon en una tabla-->
+     <% }) %>
+    <% } %>
+</div>
+<div class="container ">
+    <h1 class="d-flex flex-row justify-content-center alig-items-center">Acción</h1>
+    <a  class="btn btn-success m-2 d-flex flex-row justify-content-center alig-items-center" href="/accion/crear">Añadir acción</a>
+    <div class="table-responsive-sm table-responsive-md">
+      <table class="table table-hover table-light">
+          <thead>
+              <tr class="table-dark">
+                <th scope="col">Fecha de realización</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Lugar de realización</th>
+                <th scope="col">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <% if (arrayAccion.length>0) {%>
+                      <% arrayAccion.forEach(accion =>{ %>
+                <td><%= accion.fechaRealizacion  %></td>
+                <td><%= accion.estado  %></td>
+                <td><%= accion.descripcion  %></td>
+                <td><%= accion.lugarRealizacion  %></td>
+                <td><a class="btn btn-warning btn-sm" href="/accion/<%= accion.id %>">Editar/Eliminar</a></td>
+              
+              </tr>
+              <% }) %>
+              <% } %>
+            </tbody>
+      </table>
+  </div>
+
+    
+</div>
+<%- include("../template/footer") %>

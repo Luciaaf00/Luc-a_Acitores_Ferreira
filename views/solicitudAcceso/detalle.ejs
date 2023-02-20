@@ -1,0 +1,100 @@
+<%- include("../template/cabecera") %>
+    <div class="container">
+        <h1 class="d-flex flex-row justify-content-center alig-items-center">Detalle de la solicitud</h1>
+        <% if(error){ %>
+            <%= mensaje %>
+                <a href="/solicitudAcceso" class="btn btn-secondary btn-block my-2">Volver</a>
+                <% }else{ %>
+                    <div class="d-flex flex-row justify-content-center alig-items-center">
+                        <form method="post" id="editar" data-id="<%= solicitudAcceso.id %>">
+                            <div class="form-group p-2">
+                                <label for="solicitud" class="text-success p-1 me-5">Solicitud:</label><br>
+                                <input type="text" value="<%= solicitudAcceso.solicitud %>" class="form-class my-2"
+                                    name="solicitud" id="solicitud" size="50%">
+                            </div>
+                            <div class="form-group p-2">
+                                <label for="dni" class="text-success p-1">DNI:</label><br>
+                                <input type="text" value="<%= solicitudAcceso.dni %>" class="form-class my-2" name="dni"
+                                    id="dni" size="50%"><br>
+
+                            </div>
+                            <div class="form-group p-2">
+                                <label for="nombre" class="text-success p-1">Nombre:</label><br>
+                                <input type="text" value="<%= solicitudAcceso.nombre %>" class="form-class my-2" name="nombre"
+                                    id="nombre" size="50%">
+                            </div>
+                            <div class="form-group p-2">
+                                <label for="apellidos" class="text-success p-1">Apellidos:</label><br>
+                                <input type="text" value="<%= solicitudAcceso.apellidos %>" class="form-class my-2" name="apellidos"
+                                    id="apellidos" size="50%">
+                            </div>
+                            <div class="form-group p-2">
+                                <label for="edad" class="text-success p-1">Edad:</label><br>
+                                <input type="text" value="<%= solicitudAcceso.edad %>" class="form-class my-2" name="edad"
+                                    id="edad" size="50%">
+                            </div>
+                            
+                            <div class="form-group p-2">
+                                <label for="descripcion" class="text-success p-1">Descripción:</label><br>
+                                <input type="text" value="<%= solicitudAcceso.descripcion %>" class="form-class my-2" name="descripcion"
+                                    id="descripcion" size="50%">
+                            </div>
+                            <div class="form-group p-2">
+                                <label for="antecedentesPenales" class="text-success p-1">Dirección:</label><br>
+                                <input type="text" value="<%= solicitudAcceso.antecedentesPenales %>" class="form-class my-2" name="antecedentesPenales"
+                                    id="antecedentesPenales" size="50%">
+                            </div>
+                            <button type="submit" class="btn btn-warning btn-sm m-2">Editar</button>
+                            <button class="btn btn-danger btn-sm" id="eliminar" data-id="<%= solicitudAcceso.id %>">Borrar</button>
+                            <hr>
+                        </form>
+                    </div>
+                    <% } %>
+    </div>
+    <%- include("../template/footer") %>
+        <script>
+            const btnEliminar = document.querySelector('#eliminar')
+            btnEliminar.addEventListener('click', async () => {
+                console.log(btnEliminar.dataset.id)
+                try {
+                    // https://developer.mozilla.org/es/docs/Web/API/HTMLElement/dataset
+                    const data = await fetch(`/solicitudAcceso/${btnEliminar.dataset.id}`, {
+                        method: 'delete'
+                    })
+                    const res = await data.json()
+                    console.log(res)
+                    if (res.estado) {
+                        window.location.href = '/solicitudAcceso'
+                    } else {
+                        console.log(res)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+            const formEditar = document.querySelector('#editar');
+            formEditar.addEventListener('submit', async (e) => {
+                e.preventDefault()
+                const solicitud = formEditar.elements['solicitud'].value
+                const dni = formEditar.elements['dni'].value
+                const nombre = formEditar.elements['nombre'].value
+                const apellidos = formEditar.elements['apellidos'].value
+                const edad = formEditar.elements['edad'].value  
+                const descripcion = formEditar.elements['descripcion'].value
+                const antecedentesPenales = formEditar.elements['antecedentesPenales'].value
+                const id = formEditar.dataset.id
+                const data = await fetch(`/solicitudAcceso/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ solicitud, dni, nombre, apellidos, edad, descripcion, antecedentesPenales })
+                })
+                const res = await data.json()
+                if (res.estado) {
+                    window.location.href = '/solicitudAcceso'
+                } else {
+                    console.log(res)
+                }
+            })
+        </script>

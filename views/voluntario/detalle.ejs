@@ -1,0 +1,89 @@
+<%- include("../template/cabecera") %>
+    <div class="container">
+        <h1 class="d-flex flex-row justify-content-center alig-items-center">Detalle del voluntario</h1>
+        <% if(error){ %>
+            <%= mensaje %>
+                <a href="/voluntario" class="btn btn-secondary btn-block my-2">Volver</a>
+                <% }else{ %>
+                    <div class="d-flex flex-row justify-content-center alig-items-center">
+                        <form method="post" id="editar" data-id="<%= voluntario.id %>">
+                            <div class="form-group p-2">
+                                <label for="formacion" class="text-success p-1 me-5">Formación:</label><br>
+                                <input type="text" value="<%= voluntario.formacion %>" class="form-class my-2"
+                                    name="formacion" id="formacion" size="50%">
+                            </div>
+                            <div class="form-group p-2">
+                                <label for="experiencia" class="text-success p-1">Experiencia:</label><br>
+                                <input type="text" value="<%= voluntario.experiencia %>" class="form-class my-2" name="experiencia"
+                                    id="experiencia" size="50%"><br>
+
+                            </div>
+                            <div class="form-group p-2">
+                                <label for="nombre" class="text-success p-1">Nombre:</label><br>
+                                <input type="text" value="<%= voluntario.nombre %>" class="form-class my-2" name="nombre"
+                                    id="nombre" size="50%">
+                            </div>
+                            <div class="form-group p-2">
+                                <label for="apellidos" class="text-success p-1">Apellidos:</label><br>
+                                <input type="text" value="<%= voluntario.apellidos %>" class="form-class my-2" name="apellidos"
+                                    id="apellidos" size="50%">
+                            </div>
+                            <div class="form-group p-2">
+                                <label for="edad" class="text-success p-1">Edad:</label><br>
+                                <input type="text" value="<%= voluntario.edad %>" class="form-class my-2" name="edad"
+                                    id="edad" size="50%">
+                            </div>
+        
+                            <button type="submit" class="btn btn-warning btn-sm m-2">Editar</button>
+                            <button class="btn btn-danger btn-sm" id="eliminar" data-id="<%= voluntario.id %>">Borrar</button>
+                            <hr>
+                        </form>
+                    </div>
+                    <% } %>
+    </div>
+    <%- include("../template/footer") %>
+        <script>
+            const btnEliminar = document.querySelector('#eliminar')
+            btnEliminar.addEventListener('click', async () => {
+                console.log(btnEliminar.dataset.id)
+                try {
+                    // https://developer.mozilla.org/es/docs/Web/API/HTMLElement/dataset
+                    const data = await fetch(`/voluntario/${btnEliminar.dataset.id}`, {
+                        method: 'delete'
+                    })
+                    const res = await data.json()
+                    console.log(res)
+                    if (res.estado) {
+                        window.location.href = '/voluntario'
+                    } else {
+                        console.log(res)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+            const formEditar = document.querySelector('#editar');
+            formEditar.addEventListener('submit', async (e) => {
+                e.preventDefault()
+                const formacion = formEditar.elements['formacion'].value
+                const experiencia = formEditar.elements['experiencia'].value
+                const nombre = formEditar.elements['nombre'].value
+                const apellidos = formEditar.elements['apellidos'].value
+                const edad = formEditar.elements['edad'].value
+               
+                const id = formEditar.dataset.id
+                const data = await fetch(`/voluntario/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ formacion, experiencia, nombre, apellidos, edad })
+                })
+                const res = await data.json()
+                if (res.estado) {
+                    window.location.href = '/voluntario'
+                } else {
+                    console.log(res)
+                }
+            })
+        </script>

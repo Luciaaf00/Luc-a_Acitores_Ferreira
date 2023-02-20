@@ -1,0 +1,39 @@
+<%- include("../template/cabecera") %>
+<div class="container ">
+    <h1 class="d-flex flex-row justify-content-center alig-items-center">Añadir Voluntario</h1>
+        <div class="d-flex flex-row justify-content-center alig-items-center">
+            <form action="/voluntario" method="post">
+                <div class="form-group p-2">
+                    <label for="formacion" class="text-success p-1 me-5">Formación:</label><br>
+                    <input type="text" placeholder="Introduce formación" class="form-class m-1" id="formacion" name="formacion" size="50%">
+                </div>
+                <div class="form-group p-2">
+                    <label for="experiencia" class="text-success p-1">Experiencia:</label><br>
+                    <input type="text" placeholder="Introduce experiencia" class="form-class m-1" id="experiencia" name="experiencia" size="50%"><br>
+
+                </div>
+                <div class="form-group p-2">
+                    <label for="nombre" class="text-success p-1">Nombre:</label><br>
+                    <input type="text"  placeholder="Introduce nombre" class="form-class m-1" id="nombre" name="nombre" size="50%">
+                </div>
+                <div class="form-group p-2" >
+                    <label for="apellidos" class="text-success p-1">Apellidos:</label><br>
+                    <input type="text" placeholder="Introduce apellidos" class="form-class m-1" id="apellidos" name="apellidos"  size="50%"><br>
+
+                </div>
+                <div class="form-group p-2" >
+                    <label for="edad" class="text-success p-1">Edad:</label><br>
+                    <input type="text" placeholder="Introduce edad" class="form-class m-1" id="edad" name="edad"  size="50%"><br>
+
+                </div>
+               
+                
+                <button type="submit" class="btn btn-danger m-2">Añadir</button>
+            </form>
+        </div>
+    
+
+</div>
+    
+
+<%- include("../template/footer") %>

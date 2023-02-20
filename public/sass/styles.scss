@@ -1,0 +1,66 @@
+// $colorRojo=;
+$letraParrafo : Verdana;
+$letraTitulo : Franklin Gothic Medium;
+
+
+body{
+    display: grid;
+}
+span{
+    font-family: $letraTitulo;
+    font-size: 20px;
+}
+nav{
+    color: white;
+    font-size: $letraParrafo;
+    span{
+        color: #FF0000;
+    }
+    #login{
+        align-items: center;
+        justify-content: center;
+    }
+}
+.carousel-inner{
+    img{
+        width: 100%;
+        height: auto;
+        filter: brightness(30%);
+    }
+    #texto{     
+        color: white;
+    }
+
+}
+.row{
+    img{
+        height: 14em;
+      border-radius: 5px;  
+    }
+    h5{
+        font-family: $letraTitulo;
+        
+    }
+    p{
+        font-family: $letraParrafo;
+    }
+}
+
+h1{
+    font-family: $letraTitulo;
+}
+label{
+    font-family: $letraParrafo;
+    font-weight: bold;
+}
+#small-s{
+    font-size: 10px;
+    max-width: 50%;
+}
+
+#footer{
+    color: white;
+    a{
+        color: white;
+    }
+}

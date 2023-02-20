@@ -1,0 +1,48 @@
+
+body {
+    display: grid; }
+  
+  span {
+    font-family: Franklin Gothic Medium;
+    font-size: 20px; }
+  
+  nav {
+    color: white;
+    font-size: Verdana; }
+    nav span {
+      color: #FF0000; }
+    nav #login {
+      align-items: center;
+      justify-content: center; }
+  
+  .carousel-inner img {
+    width: 100%;
+    height: auto;
+    filter: brightness(30%); }
+  .carousel-inner #texto {
+    color: white; }
+  
+  .row img {
+    height: 14em;
+    border-radius: 5px; }
+  .row h5 {
+    font-family: Franklin Gothic Medium; }
+  .row p {
+    font-family: Verdana; }
+  
+  h1 {
+    font-family: Franklin Gothic Medium; }
+  
+  label {
+    font-family: Verdana;
+    font-weight: bold; }
+  
+  #small-s {
+    font-size: 10px;
+    max-width: 50%; }
+  
+  #footer {
+    color: white; }
+    #footer a {
+      color: white; }
+  

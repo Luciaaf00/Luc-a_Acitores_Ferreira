@@ -1,0 +1,46 @@
+<%- include("../template/cabecera") %>
+<div class="container ">
+    <h1 class="d-flex flex-row justify-content-center alig-items-center">Añadir Solicitud</h1>
+        <div class="d-flex flex-row justify-content-center alig-items-center">
+            <form action="/solicitudAcceso" method="post">
+                <div class="form-group p-2">
+                    <label for="solicitud" class="text-success p-1 me-5">Solicitud:</label><br>
+                    <input type="text" placeholder="Introduce solicitante/voluntario" class="form-class m-1" id="solicitud" name="solicitud" size="50%">
+                </div>
+                <div class="form-group p-2">
+                    <label for="dni" class="text-success p-1">DNI:</label><br>
+                    <input type="text" placeholder="Introduce DNI" class="form-class m-1" id="dni" name="dni" size="50%"><br>
+
+                </div>
+                <div class="form-group p-2">
+                    <label for="nombre" class="text-success p-1">Nombre:</label><br>
+                    <input type="text"  placeholder="Introduce nombre" class="form-class m-1" id="nombre" name="nombre" size="50%">
+                </div>
+                <div class="form-group p-2" >
+                    <label for="apellidos" class="text-success p-1">Apellidos:</label><br>
+                    <input type="text" placeholder="Introduce apellidos" class="form-class m-1" id="apellidos" name="apellidos"  size="50%"><br>
+
+                </div>
+                <div class="form-group p-2" >
+                    <label for="edad" class="text-success p-1">Edad:</label><br>
+                    <input type="text" placeholder="Introduce edad" class="form-class m-1" id="edad" name="edad"  size="50%"><br>
+
+                <div class="form-group p-2">
+                    <label for="descripcion" class="text-success p-1">Descripción:</label><br>
+                    <input type="text"  placeholder="Introduce descripción" class="form-class m-1" id="descripcion" name="descripcion" size="50%">
+                </div>
+                <div class="form-group p-2" >
+                    <label for="antecedentesPenales" class="text-success p-1">Antecedentes Penales:</label><br>
+                    <input type="text" placeholder="Introduce si/no" class="form-class m-1" id="antecedentesPenales" name="antecedentesPenales"  size="50%"><br>
+
+                </div>
+                
+                <button type="submit" class="btn btn-danger m-2">Añadir</button>
+            </form>
+        </div>
+    
+
+</div>
+    
+
+<%- include("../template/footer") %>

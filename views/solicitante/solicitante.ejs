@@ -1,0 +1,51 @@
+<%- include("../template/cabecera") %>
+<div class="container">
+    <!--Si existen elementos en el array de Solicitante-->
+    <% if (arraySolicitante.length > 0) { %>
+     <!--Haremos el foreach para recorrer el array-->
+     <% arraySolicitante.forEach(solicitante => { %>
+       <!--Aquí podremos mostrar todos los pokemon en una tabla-->
+     <% }) %>
+    <% } %>
+</div>
+<div class="container ">
+    <h1 class="d-flex flex-row justify-content-center alig-items-center">Solicitante</h1>
+    <a  class="btn btn-success m-2 d-flex flex-row justify-content-center alig-items-center" href="/solicitante/crear">Añadir solicitante</a>
+    <div class="table-responsive-sm table-responsive-md">
+      <table class="table table-hover table-light">
+          <thead>
+              <tr class="table-dark">
+                <th scope="col">Problemas de movilidad</th>
+                <th scope="col">Enfermedad</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <% if (arraySolicitante.length>0) {%>
+                      <% arraySolicitante.forEach(solicitante =>{ %>
+                <td><%= solicitante.problemaMovilidad  %></td>
+                <td><%= solicitante.enfermedad  %></td>
+                <td><%= solicitante.nombre  %></td>
+                <td><%= solicitante.apellidos  %></td>
+                <td><%= solicitante.edad  %></td>
+                <td><%= solicitante.direccion  %></td>
+                <td><%= solicitante.descripcion  %></td>
+
+                <td><a class="btn btn-warning btn-sm" href="/solicitante/<%= solicitante.id %>">Editar/Eliminar</a></td>
+              
+              </tr>
+              <% }) %>
+              <% } %>
+            </tbody>
+      </table>
+  </div>
+
+    
+</div>
+<%- include("../template/footer") %>
